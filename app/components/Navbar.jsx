@@ -51,7 +51,7 @@ function Navbar() {
     ];
 
     const toggleBreadcrumb = () => {
-        setShowBreadcrumb((prev) => !prev); // Toggle the state
+        setShowBreadcrumb((prev) => !prev); 
     };
 
     return (
@@ -59,7 +59,7 @@ function Navbar() {
             <div className="bg-[rgba(0,0,0,.8)] lg:bg-[rgba(0,0,0,.5)] absolute inset-0 z-10 h-16 lg:h-24"></div>
 
             <div className="relative flex justify-between items-center px-5 xl:px-32 py-3 z-20">
-                <img src='' className='h-10 lg:h-20 w-20 lg:w-28 ' alt='logo' />
+                <img src='/' className='h-10 lg:h-20 w-20 lg:w-28 ' alt='logo' />
                 <div className="hidden lg:flex">
                     <ul className="font-semibold flex items-center justify-between gap-7">
                         {navbar.map((item, index) => (

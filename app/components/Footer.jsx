@@ -37,15 +37,15 @@ function Footer() {
       ];
 
   return (
-    <div className='px-5 xl:px-32  bg-[#2270ae] bg-cover bg-center mt-20 lg:mt-16  h-auto w-full  '>
+    <div className='px-5 xl:px-32  bg-[#2270ae] mt-20 lg:mt-16  h-auto w-full  '>
         
-        <div className=" text-gray-300 pt-12 lg:pb-12 border-b border-dotted px-5 md:px-16 lg:px-0 border-b-white">
+        <div className=" text-gray-300 pt-12 lg:pb-12 border-b border-dotted border-b-white">
       <div className="container mx-auto ">
         <div className="flex flex-wrap -mx-6">
         
           <div className="w-full md:w-[40%] lg:w-[20%] px-6 mb-12 lg:mb-0">
             <div>
-              <img src="" alt="Logo" className="mb-6 w-40" />
+              <img src="/" alt="Logo" className="mb-6 w-40" />
               
             </div>
             

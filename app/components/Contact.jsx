@@ -2,8 +2,8 @@ import React from "react";
 
 function Contact() {
   return (
-    <div className="flex gap-10 px-5 xl:px-32 w-full">
-      <div className="w-1/2">
+    <div className="md:flex gap-10 px-5 xl:px-32 w-full">
+      <div className="w-full md:w-1/2">
         <img
           src="/contact/before.webp"
           alt="before"
@@ -11,7 +11,7 @@ function Contact() {
         />
       </div>
 
-      <div className="flex flex-col items-start justify-center w-1/2">
+      <div className="flex flex-col items-center md:items-start justify-center w-full md:w-1/2 mt-7 md:mt-0">
         <h1 className="text-[#f7941d] text-2xl font-bold text-center">
           GET IN TOUCH
         </h1>
