@@ -114,7 +114,7 @@ function Page() {
         <div className="my-14 px-5 xl:px-32 flex justify-center">
           {/* Dot Navigation with Sliding Progress Line */}
           <div className="w-full max-w-3xl">
-            <div className="flex justify-center mb-4 lg:mb-7 items-center relative">
+            <div className="flex  mb-4 lg:mb-7 items-center relative">
               {/* Static line */}
               <div className="absolute w-full h-1 bg-gray-300 rounded-md"></div> 
               {/* Sliding progress line */}
@@ -127,7 +127,7 @@ function Page() {
               {[1, 2, 3, 4].map((step) => (
                 <div
                   key={step}
-                  className={`w-6 h-6 mx-2 rounded-full flex items-center justify-center ${step <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+                  className={`w-6 h-6 mx-[79px] relative rounded-full flex items-center justify-center ${step <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
                 >
                   {step < currentStep ? (
                     <FaCheckCircle className="text-white" />
