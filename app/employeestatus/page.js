@@ -85,7 +85,7 @@ function Page() {
       {!showForm && (
         <div className="flex justify-center items-center my-14 px-5 xl:px-32">
           <div className="w-full max-w-lg">
-            <label htmlFor="registration" className="block text-2xl font-sans font-semibold text-gray-700 mb-5">
+            <label htmlFor="registration" className="block text-xl md:text-2xl font-sans font-semibold text-gray-700 mb-5">
               Enter Registration Number
             </label>
             <div className="flex items-center border border-gray-300 rounded-lg">
@@ -127,7 +127,7 @@ function Page() {
               {[1, 2, 3, 4].map((step) => (
                 <div
                   key={step}
-                  className={`w-6 h-6 mx-[79px] relative rounded-full flex items-center justify-center ${step <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+                  className={`w-6 h-6 mx-10 md:mx-[79px] relative rounded-full flex items-center justify-center ${step <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
                 >
                   {step < currentStep ? (
                     <FaCheckCircle className="text-white" />
