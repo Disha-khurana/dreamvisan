@@ -1,7 +1,12 @@
+import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 
 function Testimonials() {
   return (
+    <>
+    
+  
     <div className="flex flex-col justify-center items-center px-5 md:px-14 xl:px-32">
       <div>
         <h3 className="text-2xl font-semibold text-center">
@@ -37,19 +42,20 @@ function Testimonials() {
             Daniel C.
           </div>
 
-          {/* Center the button */}
-          <div className="flex justify-center mt-8">
+         
+          <Link href='/about' className="flex justify-center mt-8">
             <button className="bg-blue-500 px-6 py-3 text-sm rounded-md text-white">
               LEARN MORE
             </button>
-          </div>
+          </Link>
         </div>
 
-        {/* Image Section */}
-        <div className="bg-[url('/bath.webp')] h-auto md:h-[570px]  rounded-tr-lg rounded-br-lg block xl:hidden w-[70%] right-0 bg-contain bg-no-repeat"></div>
+     
+        <div className="bg-[url('/bath.webp')] h-auto md:h-[570px]  rounded-tr-lg rounded-br-lg md:hidden lg:block xl:hidden w-[70%] right-0 bg-contain bg-no-repeat"></div>
         <div className="bg-[url('/bathroom.webp')] h-auto md:h-[570px]  rounded-tr-lg rounded-br-lg hidden xl:block w-[70%] right-0 bg-contain bg-no-repeat"></div>
       </div>
     </div>
+    </>
   );
 }
 

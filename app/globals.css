@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.inner-box{
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);;
+  }
+
+/* .img-filter{
+    filter: brightness(0) saturate(100%) invert(59%) sepia(36%) saturate(581%) hue-rotate(172deg) brightness(96%) contrast(92%);
+}
+   */

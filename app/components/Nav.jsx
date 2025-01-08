@@ -7,6 +7,7 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import Head from "next/head";
 
 function Nav() {
   const [showBreadcrumb, setShowBreadcrumb] = useState(false);
@@ -25,7 +26,7 @@ function Nav() {
       title: "Call Now",
       content: (
         <a href="tel:+918699522926" className="hover:text-[#25348b]">
-          +91 86995 22926
+          +91-43525 45555
         </a>
       ),
     },
@@ -33,8 +34,8 @@ function Nav() {
       icon: <IoMailOutline className="text-[#25348b] text-2xl" />,
       title: "Send Email",
       content: (
-        <a href="mailto:info@thedreamvisa.com" className="hover:text-[#25348b]">
-          info@thedreamvisa.com
+        <a href="mailto:info@alfaconstruction.com" className="hover:text-[#25348b]">
+          info@alfaconstruction.com
         </a>
       ),
     },
@@ -48,8 +49,8 @@ function Nav() {
           rel="noopener noreferrer"
           className="hover:text-[#25348b]"
         >
-          SCO: 270, 2nd Floor, Sector 118, TDI-1, Sahibzada Ajit Singh Nagar,
-          Punjab 160055
+          SCO: 270, 2nd Floor, Sector 118, TDI-1,Canada
+
         </a>
       ),
     },
@@ -60,12 +61,17 @@ function Nav() {
   };
 
   return (
+    <>
+     
+   
     <div>
       <div className=" justify-center items-center hidden lg:flex bg-white py-8">
-        <img src="/" className="h-10 lg:h-16 w-20 lg:w-28 " alt="logo" />
+      <Link href='/'>
+          <img src="/logo.webp" className="h-auto w-32" />
+          </Link>
       </div>
-      <div className="relative flex justify-start lg:justify-center items-center py-4 px-5 xl:px-32 z-20 bg-[#2270ae]">
-      <img src="/" className="h-10 lg:h-16 w-20 lg:w-28 lg:hidden" alt="logo" />
+      <div className="relative flex justify-start lg:justify-center items-center py-2 lg:py-4 px-5 md:px-10 xl:px-32 z-20 bg-[#2270ae]">
+      <img src='/logomain.webp' className='h-auto w-20  block lg:hidden ' alt='logo' />
         <div className="hidden lg:flex">
           <ul className="font-semibold flex items-center justify-between gap-7">
             {navbar.map((item, index) => (
@@ -80,7 +86,7 @@ function Nav() {
       </div>
       <button
         onClick={toggleBreadcrumb}
-        className="block lg:hidden absolute z-20 top-5 right-4 text-[#25348b] p-2 rounded"
+        className="block lg:hidden absolute z-20 top-7 right-4 text-[#25348b] p-2 rounded"
       >
         <div className="space-y-1">
           <span className="block w-6 h-0.5 bg-white"></span>
@@ -95,20 +101,24 @@ function Nav() {
         }`}
       >
         <div className="flex items-center justify-between mb-8 px-6">
-          <img src="/logo.webp" className="h-16 bg-white" />
+          <Link href='/'>
+          <img src="/logo.webp" className="h-16 " />
+          </Link>
           <button onClick={toggleBreadcrumb} className="cursor-pointer text-black">
             X
           </button>
         </div>
         <ul className="flex flex-col gap-4">
           {navbar.map((item, index) => (
+            <Link key={index} href={item.link}>
             <li
-              key={index}
+              
               className="px-5 flex items-center gap-3 border-b text-sm border-b-stone-500 pb-3"
             >
               <MdKeyboardDoubleArrowRight className="text-[#25348b] text-xl" />
               {item.name.toUpperCase()}
             </li>
+            </Link>
           ))}
         </ul>
         <ul className="space-y-4 py-5 px-5">
@@ -126,6 +136,7 @@ function Nav() {
         </ul>
       </div>
     </div>
+    </>
   );
 }
 

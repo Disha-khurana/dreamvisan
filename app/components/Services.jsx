@@ -5,6 +5,8 @@ import { useKeenSlider } from 'keen-slider/react'; // Import the useKeenSlider h
 import 'keen-slider/keen-slider.min.css'; // Import KeenSlider styles
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
+import Head from 'next/head';
+import Link from 'next/link';
 
 function Services() {
     const service = [
@@ -12,10 +14,10 @@ function Services() {
         {image: '/services/h2.webp', title: 'GENERAL CONTRACTOR', para: 'From the initial design to the final touches, we won’t compromise on practicality, creating a space where you can relax, host, and enjoy, whatever the weather.'},
         {image: '/services/builder.webp', title: 'LICENSED HOME BUILDER', para: 'From the initial design to the final touches, we won’t compromise on practicality, creating a space where you can relax, host, and enjoy, whatever the weather.'},
         {image: '/services/comm.webp', title: 'COMMERCIAL', para: 'From the initial design to the final touches, we won’t compromise on practicality, creating a space where you can relax, host, and enjoy, whatever the weather.'},
-        {image: '/services/custom.webp', title: 'PEMBERTON-BASED CUSTOM HOME BUILDER', para: 'From the initial design to the final touches, we won’t compromise on practicality, creating a space where you can relax, host, and enjoy, whatever the weather.'}
+        {image: '/services/custom.webp', title: 'CANADA-BASED CUSTOM HOME BUILDER', para: 'From the initial design to the final touches, we won’t compromise on practicality, creating a space where you can relax, host, and enjoy, whatever the weather.'}
     ];
 
-    // Initialize the KeenSlider using the useKeenSlider hook
+    
     const [sliderRef, slider] = useKeenSlider({
         loop: true,
         autoplay: true,
@@ -44,11 +46,14 @@ function Services() {
               },
             },
           },
-        navigation: true, // Navigation arrows
-        dots: true, // Navigation dots
+        navigation: true, 
+        dots: true, 
     });
 
     return (
+      <>
+     
+    
         <div className='bg-[#2270ae] w-full h-auto px-5 xl:px-0 xl:ps-32'>
              <div className="flex flex-col lg:flex-row items-center text-center lg:text-start py-10 md:py-20 gap-8">
                <div className="sec-title lg:w-[30%] text-white">
@@ -63,10 +68,12 @@ function Services() {
             slightly believable of but the majority have suffered majority have
             in some variations of passages
           </p>
+          <Link href='/services'>
           <span className="  text-xs  bg-[#f7941d] tracking-wide py-4 px-5 lg:px-7 rounded-md  font-bold ">
            EXPLORE SERVICES
         
           </span>
+          </Link>
           <div className="flex justify-center lg:justify-start gap-4 mt-10 md:mt-14">
             <button
               onClick={() => slider.current?.prev()}
@@ -96,6 +103,7 @@ function Services() {
           
           
         </div>
+        </>
     );
 }
 

@@ -5,6 +5,7 @@ import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaSquareFacebook } from "react-icons/fa6";
+import Head from 'next/head';
 
 function Footer() {
 
@@ -13,8 +14,8 @@ function Footer() {
           iconClass:<IoCall />,
           title: "Call Us Anytime",
           content: (
-            <a href="tel:+91-7710711770" className="">
-              +91-77107 11770
+            <a href="tel:+91-43525 45555" className="">
+              +91-43525 45555
             </a>
           ),
         },
@@ -22,32 +23,36 @@ function Footer() {
           iconClass: <IoMail />,
           title: "Send Mail",
           content: (
-            <a href="mailto:founder@virsvisaexperts.com" className="">
-              founder@virsvisaexperts.com
+            <a href="mailto:info@alfaconstruction.com" className="">
+              info@alfaconstruction.com
             </a>
           ),
         },
         {
           iconClass: <FaLocationDot />,
           title: "Our Address",
-          content: <span>SCO: 270, 2nd Floor, Sector 118, TDI-1, Sahibzada Ajit Singh Nagar
+          content: <span>SCO: 270, 2nd Floor, Sector 118, TDI-1, Canada
 
           </span>,
         },
       ];
 
   return (
-    <div className='px-5 xl:px-32  bg-[#2270ae] mt-20 lg:mt-16  h-auto w-full  '>
+    <>
+     
+    
+  
+    <div className='px-5 md:px-10 xl:px-32  bg-[#2270ae] mt-20 lg:mt-16  h-auto w-full  '>
         
         <div className=" text-gray-300 pt-12 lg:pb-12 border-b border-dotted border-b-white">
       <div className="container mx-auto ">
         <div className="flex flex-wrap -mx-6">
         
           <div className="w-full md:w-[40%] lg:w-[20%] px-6 mb-12 lg:mb-0">
-            <div>
-              <img src="/" alt="Logo" className="mb-6 w-40" />
+            <Link href='/'>
+            <img src='/logomain.webp' className='h-auto w-32 ' alt='logo' />
               
-            </div>
+            </Link>
             
           </div>
 
@@ -85,7 +90,7 @@ function Footer() {
             <h5 className="text-base font-bold text-white mb-6 border-b border-b-white pb-4">GET IN TOUCH</h5>
             <ul className="space-y-4">
              <h4 className='font-semibold text-white'>Have a project in mind?</h4>
-             <Link href='/'>
+             <Link href='/contact'>
              <button className='bg-[#f7941d] text-white px-5 py-2 rounded-md mt-4' >Contact Us</button>
              </Link>
             </ul>
@@ -94,10 +99,16 @@ function Footer() {
       </div>
     </div>
     <div className="py-5 ">
-      <div className="container mx-auto  flex flex-col md:flex-row justify-center items-center">
-        {/* Copyright Text */}
+      <div className="container mx-auto  flex flex-col md:flex-row justify-between items-center">
+       
         <div className="text-white text-sm">
           © Copyrights reserved by <Link href='https://www.futuretouch.in/' className="text-white">Future IT Touch❤️</Link>
+        </div>
+
+        <div className=' font-semibold flex items-center gap-3 text-sm'>
+          <Link href='/'><div className='text-white hover:text-[#f7941d]'>Privacy Policy  </div></Link>
+          <span className='text-white '>|</span>
+          <Link href='/'><div className='text-white hover:text-[#f7941d]'>Terms and Conditions</div></Link>
         </div>
 
         {/* Social Icons
@@ -133,6 +144,7 @@ function Footer() {
 
 
     </div>
+    </>
   )
 }
 

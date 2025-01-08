@@ -1,14 +1,40 @@
 import Head from "next/head";
 import React from "react";
 
-function About() {
+function AboutUs() {
   return (
     <>
      
+
     <div className="lg:flex items-center justify-center w-full gap-12 px-5 md:px-10 xl:px-32">
+        <div className="lg:w-1/2 pb-7 lg:pb-0 ">
+        <div className="flex justify-center">
+          <img
+            src="/about/about1.webp"
+            className="w-[150px] sm:w-[190px] md:w-[360px] lg:w-[250px] xl:w-[300px]  h-auto rounded-tl-[64px]"
+            alt="About Image"
+          />
+          <img
+            src="/about/about2.webp"
+            className="w-[150px] sm:w-[190px] md:w-[360px] lg:w-[250px] xl:w-[300px] h-auto  rounded-tr-[64px]"
+          />
+        </div>
+
+        <div className="flex justify-center ">
+          <img
+            src="/about/about3.webp"
+            className="w-[150px] sm:w-[190px] md:w-[360px] lg:w-[250px] xl:w-[300px] h-auto rounded-bl-[64px]"
+            alt="About Image"
+          />
+          <img
+            src="/about/about4.webp"
+            className="w-[150px] sm:w-[190px] md:w-[360px] lg:w-[250px] xl:w-[300px] h-auto  rounded-br-[64px]"
+          />
+        </div>
+      </div>
       <div className="lg:w-1/2">
         <h2 className="text-[#f7941d] text-center md:text-start font-bold text-lg md:text-xl mb-5">
-          ALFA CONSTRUCTION INC. BASED IN CANADA
+          YOUR LOCAL HOME BUILDER, GENERAL CONTRACTOR, AND DETAILED CRAFTSMEN.
         </h2>
         <p className="text-base text-gray-700 mb-3 leading-relaxed text-justify">
           Founded in 1987, Alfa Construction Inc. was established in an effort to
@@ -32,12 +58,10 @@ function About() {
           that count.
         </p>
       </div>
-      <div className="lg:w-1/2 pt-7 lg:pt-0">
-        <img src="/h.webp" className="w-full h-auto rounded-br-[64px] rounded-tl-[64px]"/>
-      </div>
+    
     </div>
     </>
   );
 }
 
-export default About;
+export default AboutUs;

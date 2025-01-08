@@ -4,6 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import Swal from 'sweetalert2';
 import { FaCheckCircle } from 'react-icons/fa';
 import Nav from '../components/Nav';
+import Head from 'next/head';
 
 function Page() {
   const [registrationNumber, setRegistrationNumber] = useState('');
@@ -14,15 +15,15 @@ function Page() {
     verificationCode: '',
   });
 
-  // Handle input change for registration number
+ 
   const handleInputChange = (e) => {
     setRegistrationNumber(e.target.value);
   };
 
-  // Handle search button click
+ 
   const handleSearch = () => {
     if (registrationNumber.trim()) {
-      // Show success message using SweetAlert
+      
       Swal.fire({
         icon: 'success',
         title: 'Registration Successful',
@@ -30,11 +31,11 @@ function Page() {
         confirmButtonText: 'Proceed to Form',
       }).then((result) => {
         if (result.isConfirmed) {
-          setShowForm(true); // Show the multi-step form
+          setShowForm(true); 
         }
       });
     } else {
-      // Show error message if registration number is empty
+      
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -43,7 +44,6 @@ function Page() {
     }
   };
 
-  // Handle change in form data across steps
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -52,7 +52,6 @@ function Page() {
     });
   };
 
-  // Navigate through form steps
   const handleNextStep = () => {
     if (currentStep < 4) {
       setCurrentStep(currentStep + 1);
@@ -65,7 +64,7 @@ function Page() {
     }
   };
 
-  // Handle form submission (on last step)
+ 
   const handleSubmit = () => {
     console.log('Form Data Submitted:', formData);
     Swal.fire({
@@ -75,15 +74,23 @@ function Page() {
     });
   };
 
-  // Calculate progress width for the sliding line
-  const progressWidth = ((currentStep - 1) / 3) * 100; // Each step represents 33.33% of progress width
+  
+  const progressWidth = ((currentStep - 1) / 3) * 100; 
 
   return (
     <>
+    <Head>
+        <title></title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Nav />
-      {/* Only show registration input if form is not shown */}
+      
       {!showForm && (
-        <div className="flex justify-center items-center my-14 px-5 xl:px-32">
+        <div className="flex justify-center items-center my-14 px-5 md:px-10 xl:px-32">
           <div className="w-full max-w-lg">
             <label htmlFor="registration" className="block text-xl md:text-2xl font-sans font-semibold text-gray-700 mb-5">
               Enter Registration Number
@@ -109,21 +116,21 @@ function Page() {
         </div>
       )}
 
-      {/* Show Dots and Sliding Progress Line only after registration */}
+      
       {showForm && (
-        <div className="my-14 px-5 xl:px-32 flex justify-center">
-          {/* Dot Navigation with Sliding Progress Line */}
+        <div className="my-14 px-5 md:px-10 xl:px-32 flex justify-center">
+          
           <div className="w-full max-w-3xl">
             <div className="flex  mb-4 lg:mb-7 items-center relative">
-              {/* Static line */}
+           
               <div className="absolute w-full h-1 bg-gray-300 rounded-md"></div> 
-              {/* Sliding progress line */}
+              
               <div
                 className="absolute h-1 bg-blue-500 transition-all duration-300 rounded-md"
-                style={{ width: `${progressWidth}%` }} // Dynamic width for the sliding progress line
+                style={{ width: `${progressWidth}%` }} 
               ></div>
 
-              {/* Dot navigation */}
+             
               {[1, 2, 3, 4].map((step) => (
                 <div
                   key={step}
@@ -138,11 +145,11 @@ function Page() {
               ))}
             </div>
 
-            {/* Multi-Step Form */}
+          
             <div className="border p-6 rounded-lg shadow-lg">
               <h2 className="text-2xl font-semibold mb-4 text-blue-500">Step {currentStep} of 4</h2>
 
-              {/* Step 1: Document Submission */}
+             
               {currentStep === 1 && (
                 <div>
                   <label className="block font-semibold text-lg mb-2">Upload Document</label>
@@ -155,7 +162,7 @@ function Page() {
                 </div>
               )}
 
-              {/* Step 2: Verify Status */}
+              
               {currentStep === 2 && (
                 <div>
                   <label className="block  font-semibold text-lg mb-2">Verification Code</label>
@@ -170,7 +177,7 @@ function Page() {
                 </div>
               )}
 
-              {/* Step 3: Application Approved */}
+              
               {currentStep === 3 && (
                 <div>
                   <h3 className="text-lg font-semibold mb-4">Application Status : <span className='text-green-600'>Approved</span></h3>
@@ -178,7 +185,7 @@ function Page() {
                 </div>
               )}
 
-              {/* Step 4: Download Application */}
+              
               {currentStep === 4 && (
                 <div>
                   <h3 className="text-lg font-semibold mb-4">Download Application</h3>
@@ -192,7 +199,7 @@ function Page() {
                 </div>
               )}
 
-              {/* Navigation Buttons */}
+            
               <div className="mt-4 flex justify-between">
                 {currentStep > 1 && (
                   <button
