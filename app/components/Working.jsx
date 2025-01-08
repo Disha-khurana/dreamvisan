@@ -44,7 +44,7 @@ function Working() {
   return (
     <>
      
-      <div className="px-5 xl:px-40 pb-28">
+      <div className="px-5 xl:px-40 md:pb-28">
         <div className="flex flex-col items-center justify-center relative">
           <h2 className="text-[26px] lg:text-[38px] text-center font-bold my-5 text-[#f7941d]">
             HOW IT WORKS

@@ -80,7 +80,7 @@ function Footer() {
           <div className="w-full md:w-1/2 lg:w-[25%] px-6 mb-12 lg:mb-0">
             <h5 className="text-base font-bold text-white border-b border-b-white pb-4 mb-6">WE'RE SOCIAL</h5>
             <ul className="space-x-2 flex items-center">
-                <span className='gap-3 flex items-center text-white'>Follow Us<FaInstagram className='text-xl text-[#f7941d]'/><FaSquareFacebook className='text-[#1d2f5d] text-2xl'/></span>
+                <span className='gap-3 flex items-center text-white'>Follow Us :<FaInstagram className='text-2xl text-[#f7941d]'/><FaSquareFacebook className='text-[#f7941d] text-2xl'/></span>
               
             </ul>
           </div>

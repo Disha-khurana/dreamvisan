@@ -1,29 +1,49 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoSearch } from "react-icons/io5";
 import Swal from 'sweetalert2';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaRegCircle } from "react-icons/fa";
 import Nav from '../components/Nav';
-import Head from 'next/head';
+import axios from 'axios';
+import { baseapi, imgapi } from '../liks/links';
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 function Page() {
   const [registrationNumber, setRegistrationNumber] = useState('');
+const [registrationinfo,SetRegisterinfo]=useState()
+
+
   const [showForm, setShowForm] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [userInfo,setuseinfo]=useState()
+
   const [formData, setFormData] = useState({
     document: '',
     verificationCode: '',
   });
 
- 
-  const handleInputChange = (e) => {
-    setRegistrationNumber(e.target.value);
-  };
 
- 
+useEffect(()=>{
+
+
+
+ const timeIntervel= setTimeout(() => {
+  const fetchapi=async()=>{
+    if(registrationNumber.length>2){
+    const data= await axios.get(`${baseapi}/register/${registrationNumber}`) ;
+    SetRegisterinfo(data.data)
+    }
+  }
+  fetchapi()
+}, 1000);
+
+return  ()=>clearTimeout(timeIntervel)
+},[registrationNumber])
+
+
+
   const handleSearch = () => {
     if (registrationNumber.trim()) {
-      
       Swal.fire({
         icon: 'success',
         title: 'Registration Successful',
@@ -35,7 +55,6 @@ function Page() {
         }
       });
     } else {
-      
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -64,7 +83,6 @@ function Page() {
     }
   };
 
- 
   const handleSubmit = () => {
     console.log('Form Data Submitted:', formData);
     Swal.fire({
@@ -74,33 +92,58 @@ function Page() {
     });
   };
 
-  
   const progressWidth = ((currentStep - 1) / 3) * 100; 
+
+const handelRegis=async(number)=>{
+  setRegistrationNumber('')
+const data= await axios.post(`${baseapi}/register/user`,{registration_number:number})
+setuseinfo(data.data)
+
+
+}
+const downloadFile = (path) => {
+  const fileUrl = `${imgapi}/${path}`; // Path to the file (public folder or CDN URL)
+  const fileName = path;
+
+  // Create an anchor element
+  const anchor = document.createElement("a");
+  anchor.href = fileUrl;
+  anchor.download = fileName;
+
+  // Trigger the download
+  document.body.appendChild(anchor);
+  anchor.click();
+
+  // Cleanup the anchor element
+  document.body.removeChild(anchor);
+};
+
+console.log(userInfo,"asdjoadis")
 
   return (
     <>
-    <Head>
-        <title></title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Nav />
-      
+     
       {!showForm && (
-        <div className="flex justify-center items-center my-14 px-5 md:px-10 xl:px-32">
+        <div className="flex flex-col items-center  my-14 px-5 xl:px-32 min-h-screen">
           <div className="w-full max-w-lg">
             <label htmlFor="registration" className="block text-xl md:text-2xl font-sans font-semibold text-gray-700 mb-5">
               Enter Registration Number
             </label>
-            <div className="flex items-center border border-gray-300 rounded-lg">
+            <div className="flex items-center border border-gray-300 rounded-lg relative">
+              { registrationNumber && registrationinfo &&
+              <div className='absolute top-[100%] h-[10rem] overflow-auto shadow-md bg-[#e7e6e6d4] left-0 w-full p-3 flex flex-col items-center'>
+              
+              {registrationinfo?.map((info,index)=>(<div key={index} className='border-b border-red-600 p-2 w-full cursor-pointer ' onClick={()=>handelRegis(info?.registration_number)}>
+                <p>{info?.registration_number}</p>
+                </div>))}
+                
+                </div> }
               <input
                 id="registration"
                 type="text"
                 value={registrationNumber}
-                onChange={handleInputChange}
+                onChange={(e)=>setRegistrationNumber(e.target.value)}
                 className="w-full px-4 text-gray-700 placeholder-gray-400 rounded-l-lg focus:outline-none"
                 placeholder="Registration Number"
               />
@@ -111,117 +154,111 @@ function Page() {
               >
                 <IoSearch className="text-xl" />
               </button>
-            </div>
-          </div>
-        </div>
-      )}
 
-      
-      {showForm && (
-        <div className="my-14 px-5 md:px-10 xl:px-32 flex justify-center">
-          
-          <div className="w-full max-w-3xl">
-            <div className="flex  mb-4 lg:mb-7 items-center relative">
-           
-              <div className="absolute w-full h-1 bg-gray-300 rounded-md"></div> 
-              
-              <div
-                className="absolute h-1 bg-blue-500 transition-all duration-300 rounded-md"
-                style={{ width: `${progressWidth}%` }} 
-              ></div>
-
-             
-              {[1, 2, 3, 4].map((step) => (
-                <div
-                  key={step}
-                  className={`w-6 h-6 mx-10 md:mx-[79px] relative rounded-full flex items-center justify-center ${step <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
-                >
-                  {step < currentStep ? (
-                    <FaCheckCircle className="text-white" />
-                  ) : step === currentStep ? (
-                    <div className="w-3 h-3 rounded-full bg-white"></div>
-                  ) : null}
-                </div>
-              ))}
             </div>
 
-          
-            <div className="border p-6 rounded-lg shadow-lg">
-              <h2 className="text-2xl font-semibold mb-4 text-blue-500">Step {currentStep} of 4</h2>
 
-             
-              {currentStep === 1 && (
-                <div>
-                  <label className="block font-semibold text-lg mb-2">Upload Document</label>
-                  <input
-                    type="file"
-                    name="document"
-                    onChange={handleFormChange}
-                    className="w-full mb-4 p-2 border rounded-md"
-                  />
-                </div>
-              )}
-
-              
-              {currentStep === 2 && (
-                <div>
-                  <label className="block  font-semibold text-lg mb-2">Verification Code</label>
-                  <input
-                    type="text"
-                    name="verificationCode"
-                    value={formData.verificationCode}
-                    onChange={handleFormChange}
-                    className="w-full mb-4 p-2 border rounded-md focus:outline-none"
-                    placeholder="Enter your verification code"
-                  />
-                </div>
-              )}
-
-              
-              {currentStep === 3 && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Application Status : <span className='text-green-600'>Approved</span></h3>
-                  <p>Your application has been approved. Please proceed to download your application.</p>
-                </div>
-              )}
-
-              
-              {currentStep === 4 && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Download Application</h3>
-                  <p>Your application is ready for download.</p>
-                  <button
-                    onClick={handleSubmit}
-                    className="px-6 py-2 bg-green-500 text-white rounded-lg mt-3 hover:bg-green-600"
-                  >
-                    Download Application
-                  </button>
-                </div>
-              )}
 
             
-              <div className="mt-4 flex justify-between">
-                {currentStep > 1 && (
-                  <button
-                    onClick={handlePreviousStep}
-                    className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400"
-                  >
-                    Previous
-                  </button>
-                )}
-                {currentStep < 4 && (
-                  <button
-                    onClick={handleNextStep}
-                    className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-                  >
-                    Next
-                  </button>
-                )}
-              </div>
-            </div>
+          </div>
+
+          {userInfo && <div className="flex flex-col justify-center items-center gap-5 mt-16 ">
+   <div className='w-[700px] bg-white shadow-xl rounded-lg  px-12 py-8 flex flex-col gap-5'>
+   <p className='text-xl text-green-700 font-bold'>View Details :</p> 
+            <div className='flex flex-col gap-4 '>
+           
+          <div className="flex gap-4">
+            <span className="font-semibold text-gray-600">Name : </span>
+            <span className="text-gray-800">{userInfo.name}</span>
+          </div>
+          {/* <div className="flex justify-between">
+            <span className="font-semibold text-gray-600">Passport #:</span>
+            <span className="text-gray-800">{userInfo.passport_number}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-semibold text-gray-600">Registration #:</span>
+            <span className="text-gray-800">{userInfo.registration_number}</span>
+          </div> */}
+
+           
+           
+           <div className="flex gap-4">
+             <span className="font-semibold text-gray-600">Nationality :</span>
+             <span className="text-gray-800">{userInfo.nationality}</span>
+           </div>
+           <div className="flex gap-4">
+             <span className="font-semibold text-gray-600">Position :</span>
+             <span className="text-gray-800">{userInfo.position}</span>
+           </div>
+           <div className="flex gap-4">
+             <span className="font-semibold text-gray-600">Travel Document Number :</span>
+             <span className="text-gray-800">{userInfo.travel_document_number}</span>
+           </div>
+ 
+             </div>
+
+             </div>
+      <div className="bg-white shadow-lg rounded-lg  p-6 w-full">
+      
+        <div className="space-y-2">
+     
+          
+    
+          <div className="flex flex-col ">
+            <span className="font-semibold text-gray-600">Status:</span>
+            <span
+              className={`text-sm font-semibold px-3 py-1 rounded-full ${
+                userInfo.verify ? " text-green-700" : " text-red-700"
+              }`}
+            >
+              {userInfo.verify ?  <div className='w-full h-[11rem] pb-14'>
+                <p className='text-xl font-bold'>Your document verified successfully</p>
+                <button className='bg-green-600 text-white p-2 px-3 rounded-md font-semibold my-3' onClick={()=>downloadFile(userInfo?.document)}>Download file</button>
+
+                <div className='flex justify-center w-full h-full'> <img  src='verify.webp'  className='w-3/6 h-full' /></div>
+             </div> :
+              
+              <div className='w-full h-[11rem]'>
+                <p className='text-xl font-bold'>Your document in under process</p>
+                <div className='flex flex-col items-start justify-center text-black pt-10 space-y-5'>
+                 
+                   <div className='flex items-center  gap-2'>
+                  {userInfo.file_submit ? <FaRegCircleCheck className='text-xl text-green-700'/> : <FaRegCircle className='text-xl '/>}
+                  <h2 className='text-[17px]'>File Submitted</h2>
+
+                  </div>
+                  
+                  <div className='flex items-center  gap-2'>
+                  {userInfo.profile_approved ? <FaRegCircleCheck className='text-xl text-green-700'/> : <FaRegCircle className='text-xl '/>}
+                  <h2 className='text-[17px]'>Profile Approved</h2>
+
+                  </div>
+                  
+                  
+                  <div className='flex items-center  gap-2'>
+                  {userInfo.offer_latter_issude ? <FaRegCircleCheck className='text-xl text-green-700'/> : <FaRegCircle className='text-xl '/>}
+                  <h2 className='text-[17px]'>Offer letter Issued</h2>
+
+                  </div>
+                  
+                </div>
+             </div>}
+            </span>
           </div>
         </div>
+      </div>
+    </div>}
+
+
+
+        </div>
       )}
+
+     
+
+
+    
+     
     </>
   );
 }

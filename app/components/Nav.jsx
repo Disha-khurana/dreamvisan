@@ -40,7 +40,7 @@ function Nav() {
       ),
     },
     {
-      icon: <IoLocationOutline className="text-[#25348b] text-6xl" />,
+      icon: <IoLocationOutline className="text-[#25348b] text-3xl" />,
       title: "Address",
       content: (
         <a
