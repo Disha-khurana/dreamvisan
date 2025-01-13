@@ -1,5 +1,4 @@
 "use client";
-import Head from "next/head";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { IoArrowForward } from "react-icons/io5";

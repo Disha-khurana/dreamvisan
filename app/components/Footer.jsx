@@ -5,7 +5,7 @@ import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaSquareFacebook } from "react-icons/fa6";
-import Head from 'next/head';
+
 
 function Footer() {
 
@@ -31,9 +31,9 @@ function Footer() {
         {
           iconClass: <FaLocationDot />,
           title: "Our Address",
-          content: <span>SCO: 270, 2nd Floor, Sector 118, TDI-1, Canada
-
-          </span>,
+          content:(
+            <a href='https://maps.app.goo.gl/huP7Ytk8rWcgMhgg7'>270, 2nd Floor, Sector 118, TDI-1, Canada</a>
+          ) 
         },
       ];
 

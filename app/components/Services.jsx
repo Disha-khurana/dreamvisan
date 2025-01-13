@@ -5,7 +5,6 @@ import { useKeenSlider } from 'keen-slider/react'; // Import the useKeenSlider h
 import 'keen-slider/keen-slider.min.css'; // Import KeenSlider styles
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
-import Head from 'next/head';
 import Link from 'next/link';
 
 function Services() {

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { IoCallOutline, IoMailOutline, IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
-import Head from 'next/head';
 
 function Navbar() {
     const [showBreadcrumb, setShowBreadcrumb] = useState(false);
@@ -12,7 +11,6 @@ function Navbar() {
         { name: "about us", link: "/about" },
         { name: "services", link: "/services" },
         { name: "employee status", link: "/employeestatus" },
-        { name: "carrers", link: "/carrers" },
         { name: "contact us", link: "/contact" },
     ];
 
@@ -39,14 +37,7 @@ function Navbar() {
             icon: <IoLocationOutline className="text-[#25348b] text-3xl" />,
             title: "Address",
             content: (
-                <a
-                    href="SCO: 270, 2nd Floor, Sector 118, TDI-1, Sahibzada Ajit Singh Nagar, Punjab 160055"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#25348b]"
-                >
-                    SCO: 270, 2nd Floor, Sector 118, TDI-1, Sahibzada Ajit Singh Nagar, Punjab 160055
-                </a>
+                <a href='https://maps.app.goo.gl/huP7Ytk8rWcgMhgg7' target="_blank">270, 2nd Floor, Sector 118, TDI-1, Canada</a>
             ),
         },
     ];
@@ -59,7 +50,7 @@ function Navbar() {
         <>
          
        
-        <div className="bg-[url('/banner.webp')] h-[500px] md:h-[440px] lg:h-[600px] xl:h-[900px] relative w-full bg-cover bg-no-repeat bg-[center_top]">
+        <div className="bg-[url('/banner.webp')] h-[500px] md:h-[514px] lg:h-[600px] xl:h-[900px] relative w-full bg-cover bg-no-repeat bg-[center_top]">
             <div className="bg-[rgba(0,0,0,.8)] lg:bg-[rgba(0,0,0,.5)] absolute inset-0 z-10 h-24 lg:h-28"></div>
 
             <div className="relative flex justify-between items-center px-5 md:px-10 xl:px-32 py-2 z-20">

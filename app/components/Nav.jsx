@@ -7,7 +7,7 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import Head from "next/head";
+
 
 function Nav() {
   const [showBreadcrumb, setShowBreadcrumb] = useState(false);
@@ -16,7 +16,6 @@ function Nav() {
     { name: "about us", link: "/about" },
     { name: "services", link: "/services" },
     { name: "employee status", link: "/employeestatus" },
-    { name: "carrers", link: "/carrers" },
     { name: "contact us", link: "/contact" },
   ];
 
@@ -43,16 +42,8 @@ function Nav() {
       icon: <IoLocationOutline className="text-[#25348b] text-3xl" />,
       title: "Address",
       content: (
-        <a
-          href="SCO: 270, 2nd Floor, Sector 118, TDI-1, Sahibzada Ajit Singh Nagar, Punjab 160055"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-[#25348b]"
-        >
-          SCO: 270, 2nd Floor, Sector 118, TDI-1,Canada
-
-        </a>
-      ),
+        <a href='https://maps.app.goo.gl/huP7Ytk8rWcgMhgg7' target="_blank">270, 2nd Floor, Sector 118, TDI-1, Canada</a>
+    )
     },
   ];
 

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Nav from '../components/Nav'
-import Carrer from './Carrer'
+import Carrer from '../components/Carrer'
 import Form2 from '../components/Form2'
 
 function page() {
